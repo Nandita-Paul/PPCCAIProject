@@ -734,7 +734,7 @@ function Homepage() {
                     </div>
                     <div className="outer-more-settings position-relative">
                       <div
-                        className={`more-settings py-4 ${isActive ? "active" : ""
+                        className={`more-settings d-flex flex-wrap align-items-center py-4 ${isActive ? "active" : ""
                           }`}
                       >
                         <div className="btn btn-t btn-sq" onClick={handleToggle}>
@@ -742,14 +742,14 @@ function Homepage() {
                         </div>
                         <div className="settings-inner">
                           <div
-                            className="ross text-end mb-3 w-100"
+                            className="ross text-end w-100"
                             onClick={handleToggle}
                           >
                             X
                           </div>
                           <div className="outer-label mt-3">
                             <div className="d-flex">
-                              <div className="flex-lb w-100 h-100">
+                              <div className="flex-lb h-100">
                                 <div className="label-sc  h-100">
                                   <input
                                     type="checkbox"
@@ -763,7 +763,7 @@ function Homepage() {
                               </div>
 
                               {checkedItems.sheetURL &&
-                                <div className="w-100 ">
+                                <div className="w-100">
                                   <div className="form-group ">
                                     <input
                                       placeholder="sheet url..(optional)"
@@ -776,11 +776,11 @@ function Homepage() {
                                 </div>
                               }
                             </div>
-                            <div className="flex-lb w-100 mt-3">
+                            <div className="flex-lb w-100 mt-2">
                               {/* <div className=" d-flex amounsc1 "> */}
 
                              
-                                <div className="label-sc1 d-flex align-items-center no-of-ads">
+                                <div className="label-sc1 w-100 d-flex align-items-center no-of-ads">
                                   <label htmlFor="" className="me-2">
                                     Number of Ads
                                   </label>
