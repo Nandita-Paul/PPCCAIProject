@@ -67,47 +67,47 @@ function Homepage() {
   };
   const GobalSite_link = localStorage.getItem("site_link")
   const GobalSite_url = localStorage.getItem("sheet_url")
-  const GobalNumber_of_ADS= localStorage.getItem("number_of_ads")
+  const GobalNumber_of_ADS = localStorage.getItem("number_of_ads")
 
 
 
 
-  const handleSheetFunc = async(e) => {
+  const handleSheetFunc = async (e) => {
     const { name, value } = e.target;
     setGenerateSheet((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-    console.log("value",value);
+    console.log("value", value);
     localStorage.setItem('number_of_ads', value);
-    
+
     if (value > 10) {
       setWarning('Warning: The number of ads cannot exceed 10!');
     } else {
       setWarning('');
-        setIsLoading(true);
-        try {
-  
-          const response = await Promise.all([
-            axios.post("https://ppcc.onrender.com/generate_ads",
-              {
-                site_url: GobalSite_link,
-                sheet_url: generateSheet.sheet_url,
-                number_of_ads: value
-              }
-            ),
-  
-          ]);
-          setSheetData(response[0].data)
-          localStorage.setItem('sheet_url', response[0].data.sheet_url);
-  
-          setIsLoading(false);
-        } catch (error) {
-          console.error("Error:", error);
-        } finally {
-          setIsLoading(false);
-        }
-      
+      setIsLoading(true);
+      try {
+
+        const response = await Promise.all([
+          axios.post("https://ppcc.onrender.com/generate_ads",
+            {
+              site_url: GobalSite_link,
+              sheet_url: generateSheet.sheet_url,
+              number_of_ads: value
+            }
+          ),
+
+        ]);
+        setSheetData(response[0].data)
+        localStorage.setItem('sheet_url', response[0].data.sheet_url);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+
     }
   };
 
@@ -371,8 +371,8 @@ function Homepage() {
   //     }
   //   }
   // };
-  
-  
+
+
   const handleChange = async (event) => {
     const { name, checked } = event.target;
     setCheckedItems({
@@ -734,7 +734,7 @@ function Homepage() {
                     </div>
                     <div className="outer-more-settings position-relative">
                       <div
-                        className={`more-settings py-4 ${isActive ? "active" : ""
+                        className={`more-settings d-flex flex-wrap align-items-center py-4 ${isActive ? "active" : ""
                           }`}
                       >
                         <div className="btn btn-t btn-sq" onClick={handleToggle}>
@@ -742,43 +742,45 @@ function Homepage() {
                         </div>
                         <div className="settings-inner">
                           <div
-                            className="ross text-end mb-3 w-100"
+                            className="ross text-end w-100"
                             onClick={handleToggle}
                           >
                             X
                           </div>
-                          <div className="outer-label">
-
-                            <div className="flex-lb d-flex">
-                              <div className="label-sc">
-                                <input
-                                  type="checkbox"
-                                  name="sheetURL"
-                                  checked={checkedItems.sheetURL}
-                                  onChange={handleSheetCheck}
-                                />
-                                <label htmlFor="sheetURL">SheetURL</label>
-                              </div>
-                             
-                            </div>
-
-                            {checkedItems.sheetURL &&
-                              <div className="banner-form-sec mt-2">
-                                <div className="form-group me-3">
+                          <div className="outer-label mt-3">
+                            <div className="d-flex">
+                              <div className="flex-lb h-100">
+                                <div className="label-sc  h-100">
                                   <input
-                                    placeholder="sheet url..(optional)"
-                                    className="form-control"
-                                    name="sheet_url"
-                                    value={generateSheet.sheet_url}
-                                    onChange={handleSheetFunc}
+                                    type="checkbox"
+                                    name="sheetURL"
+                                    checked={checkedItems.sheetURL}
+                                    onChange={handleSheetCheck}
                                   />
+                                  <label htmlFor="sheetURL">SheetURL</label>
                                 </div>
+
                               </div>
-                            }
-                            <div className="flex-lb d-flex mt-2">
-                            {/* <div className=" d-flex amounsc1 "> */}
-                            <div className="label-sc">
-                                <div className="label-sc1 d-flex align-items-center">
+
+                              {checkedItems.sheetURL &&
+                                <div className="w-100">
+                                  <div className="form-group ">
+                                    <input
+                                      placeholder="sheet url..(optional)"
+                                      className="form-control"
+                                      name="sheet_url"
+                                      value={generateSheet.sheet_url}
+                                      onChange={handleSheetFunc}
+                                    />
+                                  </div>
+                                </div>
+                              }
+                            </div>
+                            <div className="flex-lb w-100 mt-2">
+                              {/* <div className=" d-flex amounsc1 "> */}
+
+                             
+                                <div className="label-sc1 w-100 d-flex align-items-center no-of-ads">
                                   <label htmlFor="" className="me-2">
                                     Number of Ads
                                   </label>
@@ -791,7 +793,14 @@ function Homepage() {
                                     onChange={handleSheetFunc}
                                   />
                                 </div>
-                              </div>
+
+                            
+
+                            </div>
+                            {warning && <p className="warning" style={{ color: 'red' }}>{warning}</p>}
+                            <div className="flex-lb d-flex w-100 mt-2">
+
+
                               <div className="label-sc">
                                 <input
                                   type="checkbox"
@@ -801,10 +810,9 @@ function Homepage() {
                                 />
                                 <label htmlFor="All">All</label>
                               </div>{" "}
-                            </div>
-                            {warning && <p style={{ color: 'red' }}>{warning}</p>}
-                            <div className="flex-lb d-flex mt-2">
-                              
+
+
+
                               <div className="label-sc">
 
                                 <input
@@ -815,6 +823,7 @@ function Homepage() {
                                 />
                                 <label htmlFor="Headline">Headline</label>
                               </div>
+
                               <div className="label-sc">
                                 <input
                                   type="checkbox"
@@ -826,7 +835,7 @@ function Homepage() {
                               </div>{" "}
                             </div>
                             <div className="flex-lb d-flex">
-                             
+
                               <div className="label-sc">
                                 <input
                                   type="checkbox"
@@ -855,10 +864,7 @@ function Homepage() {
                                 <label htmlFor="snippets">Snippets</label>
                               </div>
                             </div>
-                            <div className="flex-lb d-flex">
-                             
 
-                            </div>
 
 
                           </div>
