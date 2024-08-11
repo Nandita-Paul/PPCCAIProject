@@ -747,38 +747,39 @@ function Homepage() {
                           >
                             X
                           </div>
-                          <div className="outer-label">
-
-                            <div className="flex-lb w-100">
-                              <div className="label-sc">
-                                <input
-                                  type="checkbox"
-                                  name="sheetURL"
-                                  checked={checkedItems.sheetURL}
-                                  onChange={handleSheetCheck}
-                                />
-                                <label htmlFor="sheetURL">SheetURL</label>
-                              </div>
-
-                            </div>
-
-                            {checkedItems.sheetURL &&
-                              <div className="w-100 mt-2">
-                                <div className="form-group me-3">
+                          <div className="outer-label mt-3">
+                            <div className="d-flex">
+                              <div className="flex-lb w-100 h-100">
+                                <div className="label-sc  h-100">
                                   <input
-                                    placeholder="sheet url..(optional)"
-                                    className="form-control"
-                                    name="sheet_url"
-                                    value={generateSheet.sheet_url}
-                                    onChange={handleSheetFunc}
+                                    type="checkbox"
+                                    name="sheetURL"
+                                    checked={checkedItems.sheetURL}
+                                    onChange={handleSheetCheck}
                                   />
+                                  <label htmlFor="sheetURL">SheetURL</label>
                                 </div>
+
                               </div>
-                            }
-                            <div className="flex-lb w-100 mt-2">
+
+                              {checkedItems.sheetURL &&
+                                <div className="w-100 ">
+                                  <div className="form-group ">
+                                    <input
+                                      placeholder="sheet url..(optional)"
+                                      className="form-control"
+                                      name="sheet_url"
+                                      value={generateSheet.sheet_url}
+                                      onChange={handleSheetFunc}
+                                    />
+                                  </div>
+                                </div>
+                              }
+                            </div>
+                            <div className="flex-lb w-100 mt-3">
                               {/* <div className=" d-flex amounsc1 "> */}
 
-                              <div className="label-sc">
+                             
                                 <div className="label-sc1 d-flex align-items-center no-of-ads">
                                   <label htmlFor="" className="me-2">
                                     Number of Ads
@@ -793,45 +794,45 @@ function Homepage() {
                                   />
                                 </div>
 
-                              </div>
+                            
 
                             </div>
-                            {warning && <p style={{ color: 'red' }}>{warning}</p>}
+                            {warning && <p className="warning" style={{ color: 'red' }}>{warning}</p>}
                             <div className="flex-lb d-flex w-100 mt-2">
-                           
-                               
-                                  <div className="label-sc">
-                                    <input
-                                      type="checkbox"
-                                      name="All"
-                                      checked={checkedItems.All}
-                                      onChange={handleChange}
-                                    />
-                                    <label htmlFor="All">All</label>
-                                  </div>{" "}
-                                
-                              
-                             
-                                <div className="label-sc">
 
-                                  <input
-                                    type="checkbox"
-                                    name="Headline"
-                                    checked={checkedItems.Headline}
-                                    onChange={handleChange}
-                                  />
-                                  <label htmlFor="Headline">Headline</label>
-                                </div>
-                              
-                                <div className="label-sc">
-                                  <input
-                                    type="checkbox"
-                                    name="descriptions"
-                                    checked={checkedItems.descriptions}
-                                    onChange={handleChange}
-                                  />
-                                  <label htmlFor="descriptions">Descriptions</label>
-                                </div>{" "}
+
+                              <div className="label-sc">
+                                <input
+                                  type="checkbox"
+                                  name="All"
+                                  checked={checkedItems.All}
+                                  onChange={handleChange}
+                                />
+                                <label htmlFor="All">All</label>
+                              </div>{" "}
+
+
+
+                              <div className="label-sc">
+
+                                <input
+                                  type="checkbox"
+                                  name="Headline"
+                                  checked={checkedItems.Headline}
+                                  onChange={handleChange}
+                                />
+                                <label htmlFor="Headline">Headline</label>
+                              </div>
+
+                              <div className="label-sc">
+                                <input
+                                  type="checkbox"
+                                  name="descriptions"
+                                  checked={checkedItems.descriptions}
+                                  onChange={handleChange}
+                                />
+                                <label htmlFor="descriptions">Descriptions</label>
+                              </div>{" "}
                             </div>
                             <div className="flex-lb d-flex">
 
