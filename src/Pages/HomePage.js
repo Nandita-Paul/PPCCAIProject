@@ -67,47 +67,47 @@ function Homepage() {
   };
   const GobalSite_link = localStorage.getItem("site_link")
   const GobalSite_url = localStorage.getItem("sheet_url")
-  const GobalNumber_of_ADS= localStorage.getItem("number_of_ads")
+  const GobalNumber_of_ADS = localStorage.getItem("number_of_ads")
 
 
 
 
-  const handleSheetFunc = async(e) => {
+  const handleSheetFunc = async (e) => {
     const { name, value } = e.target;
     setGenerateSheet((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-    console.log("value",value);
+    console.log("value", value);
     localStorage.setItem('number_of_ads', value);
-    
+
     if (value > 10) {
       setWarning('Warning: The number of ads cannot exceed 10!');
     } else {
       setWarning('');
-        setIsLoading(true);
-        try {
-  
-          const response = await Promise.all([
-            axios.post("https://ppcc.onrender.com/generate_ads",
-              {
-                site_url: GobalSite_link,
-                sheet_url: generateSheet.sheet_url,
-                number_of_ads: value
-              }
-            ),
-  
-          ]);
-          setSheetData(response[0].data)
-          localStorage.setItem('sheet_url', response[0].data.sheet_url);
-  
-          setIsLoading(false);
-        } catch (error) {
-          console.error("Error:", error);
-        } finally {
-          setIsLoading(false);
-        }
-      
+      setIsLoading(true);
+      try {
+
+        const response = await Promise.all([
+          axios.post("https://ppcc.onrender.com/generate_ads",
+            {
+              site_url: GobalSite_link,
+              sheet_url: generateSheet.sheet_url,
+              number_of_ads: value
+            }
+          ),
+
+        ]);
+        setSheetData(response[0].data)
+        localStorage.setItem('sheet_url', response[0].data.sheet_url);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+
     }
   };
 
@@ -371,8 +371,8 @@ function Homepage() {
   //     }
   //   }
   // };
-  
-  
+
+
   const handleChange = async (event) => {
     const { name, checked } = event.target;
     setCheckedItems({
@@ -749,7 +749,7 @@ function Homepage() {
                           </div>
                           <div className="outer-label">
 
-                            <div className="flex-lb d-flex">
+                            <div className="flex-lb w-100">
                               <div className="label-sc">
                                 <input
                                   type="checkbox"
@@ -759,11 +759,11 @@ function Homepage() {
                                 />
                                 <label htmlFor="sheetURL">SheetURL</label>
                               </div>
-                             
+
                             </div>
 
                             {checkedItems.sheetURL &&
-                              <div className="banner-form-sec mt-2">
+                              <div className="w-100 mt-2">
                                 <div className="form-group me-3">
                                   <input
                                     placeholder="sheet url..(optional)"
@@ -775,10 +775,11 @@ function Homepage() {
                                 </div>
                               </div>
                             }
-                            <div className="flex-lb d-flex mt-2">
-                            {/* <div className=" d-flex amounsc1 "> */}
-                            <div className="label-sc">
-                                <div className="label-sc1 d-flex align-items-center">
+                            <div className="flex-lb w-100 mt-2">
+                              {/* <div className=" d-flex amounsc1 "> */}
+
+                              <div className="label-sc">
+                                <div className="label-sc1 d-flex align-items-center no-of-ads">
                                   <label htmlFor="" className="me-2">
                                     Number of Ads
                                   </label>
@@ -791,42 +792,49 @@ function Homepage() {
                                     onChange={handleSheetFunc}
                                   />
                                 </div>
+
                               </div>
-                              <div className="label-sc">
-                                <input
-                                  type="checkbox"
-                                  name="All"
-                                  checked={checkedItems.All}
-                                  onChange={handleChange}
-                                />
-                                <label htmlFor="All">All</label>
-                              </div>{" "}
+
                             </div>
                             {warning && <p style={{ color: 'red' }}>{warning}</p>}
-                            <div className="flex-lb d-flex mt-2">
+                            <div className="flex-lb d-flex w-100 mt-2">
+                           
+                               
+                                  <div className="label-sc">
+                                    <input
+                                      type="checkbox"
+                                      name="All"
+                                      checked={checkedItems.All}
+                                      onChange={handleChange}
+                                    />
+                                    <label htmlFor="All">All</label>
+                                  </div>{" "}
+                                
                               
-                              <div className="label-sc">
+                             
+                                <div className="label-sc">
 
-                                <input
-                                  type="checkbox"
-                                  name="Headline"
-                                  checked={checkedItems.Headline}
-                                  onChange={handleChange}
-                                />
-                                <label htmlFor="Headline">Headline</label>
-                              </div>
-                              <div className="label-sc">
-                                <input
-                                  type="checkbox"
-                                  name="descriptions"
-                                  checked={checkedItems.descriptions}
-                                  onChange={handleChange}
-                                />
-                                <label htmlFor="descriptions">Descriptions</label>
-                              </div>{" "}
+                                  <input
+                                    type="checkbox"
+                                    name="Headline"
+                                    checked={checkedItems.Headline}
+                                    onChange={handleChange}
+                                  />
+                                  <label htmlFor="Headline">Headline</label>
+                                </div>
+                              
+                                <div className="label-sc">
+                                  <input
+                                    type="checkbox"
+                                    name="descriptions"
+                                    checked={checkedItems.descriptions}
+                                    onChange={handleChange}
+                                  />
+                                  <label htmlFor="descriptions">Descriptions</label>
+                                </div>{" "}
                             </div>
                             <div className="flex-lb d-flex">
-                             
+
                               <div className="label-sc">
                                 <input
                                   type="checkbox"
@@ -855,10 +863,7 @@ function Homepage() {
                                 <label htmlFor="snippets">Snippets</label>
                               </div>
                             </div>
-                            <div className="flex-lb d-flex">
-                             
 
-                            </div>
 
 
                           </div>

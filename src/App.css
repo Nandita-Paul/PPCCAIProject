@@ -280,6 +280,9 @@ height: 100vh;
 .more-settings.active .settings-inner{
   opacity: 1;height: 100%;transition: all 0.5s;
 }
+.no-of-ads label{
+  flex-shrink: 0;
+}
 .more-settings .btn{
   cursor: pointer;
 }
@@ -287,8 +290,9 @@ height: 100vh;
   width: 100%;text-align: center;justify-content: center;
 }
 .ross{
-  cursor: pointer;
+  cursor: pointer;padding-right: 10px;
 }
+
 .settings-inner{
   opacity: 0;height: 0;transition: all 0.5s;
 }
@@ -313,6 +317,9 @@ body.hidden #root{
   }
 }
 @media (max-width:991px){
+  .extract-sc .btn-sq{
+    padding-right: 30px;
+  }
   h1,.h1{
     font-size: 40px;
   }
